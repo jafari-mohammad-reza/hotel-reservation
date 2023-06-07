@@ -14,14 +14,13 @@ func ConnectToDB() (*mongo.Client, *mongo.Database) {
 	fmt.Println(url)
 	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://127.0.0.1:27017"))
 	if err != nil {
-		panic(err)
+		defer func(client *mongo.Client, ctx context.Context) {
+			err := client.Disconnect(ctx)
+			if err != nil {
+				panic(err)
+			}
+		}(client, context.Background())
 	}
-	defer func(client *mongo.Client, ctx context.Context) {
-		err := client.Disconnect(ctx)
-		if err != nil {
-			panic(err)
-		}
-	}(client, context.Background())
 	database := client.Database("hotel_reservation")
 	return client, database
 }
