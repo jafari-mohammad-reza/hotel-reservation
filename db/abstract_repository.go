@@ -4,7 +4,6 @@ import (
 	"context"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"time"
 )
 
 type AbstractRepository interface{}
@@ -12,15 +11,12 @@ type MongoDbAbstractRepository struct {
 	Collection *mongo.Collection
 }
 
-func (m *MongoDbAbstractRepository) Create(entity any) error {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
+func (m *MongoDbAbstractRepository) Create(ctx context.Context, entity any) error {
+
 	_, err := m.Collection.InsertOne(ctx, entity)
 	return err
 }
-func (m *MongoDbAbstractRepository) Update(id string, update bson.M) error {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
+func (m *MongoDbAbstractRepository) Update(ctx context.Context, id string, update bson.M) error {
 
 	obi, err := stringToObjectId(id)
 	if err != nil {
@@ -30,9 +26,7 @@ func (m *MongoDbAbstractRepository) Update(id string, update bson.M) error {
 	_, updateErr := m.Collection.UpdateOne(ctx, filter, bson.M{"$set": update})
 	return updateErr
 }
-func (m *MongoDbAbstractRepository) Delete(id string) error {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
+func (m *MongoDbAbstractRepository) Delete(ctx context.Context, id string) error {
 
 	obi, err := stringToObjectId(id)
 	if err != nil {
@@ -43,9 +37,8 @@ func (m *MongoDbAbstractRepository) Delete(id string) error {
 	return deleteErr
 }
 
-func (m *MongoDbAbstractRepository) GetAll() ([]any, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
+func (m *MongoDbAbstractRepository) GetAll(ctx context.Context) ([]any, error) {
+
 	cursor, err := m.Collection.Find(ctx, bson.M{})
 	if err != nil {
 		return nil, err
@@ -68,15 +61,17 @@ func (m *MongoDbAbstractRepository) GetAll() ([]any, error) {
 	return entities, nil
 }
 
-func (m *MongoDbAbstractRepository) GetById(id string) (*mongo.SingleResult, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
+func (m *MongoDbAbstractRepository) GetById(ctx context.Context, id string) (any, error) {
 
 	obi, err := stringToObjectId(id)
 	if err != nil {
 		return nil, err
 	}
 	filter := bson.M{"_id": obi}
-	user := m.Collection.FindOne(ctx, filter, nil)
-	return user, nil
+	var data any
+	decodeErr := m.Collection.FindOne(ctx, filter, nil).Decode(&data)
+	if decodeErr != nil {
+		return nil, decodeErr
+	}
+	return data, nil
 }
