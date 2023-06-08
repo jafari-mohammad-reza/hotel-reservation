@@ -1,13 +1,16 @@
 package db
 
-import "go.mongodb.org/mongo-driver/mongo"
+import (
+	"github.com/jafari-mohammad-reza/hotel-reservation.git/types"
+	"go.mongodb.org/mongo-driver/mongo"
+)
 
 type UserRepository struct {
-	MongoDbAbstractRepository
+	MongoDbAbstractRepository[types.User]
 }
 
 func NewUserRepository(collection *mongo.Collection) *UserRepository {
 	return &UserRepository{
-		MongoDbAbstractRepository: MongoDbAbstractRepository{Collection: collection},
+		MongoDbAbstractRepository: MongoDbAbstractRepository[types.User]{Collection: collection},
 	}
 }

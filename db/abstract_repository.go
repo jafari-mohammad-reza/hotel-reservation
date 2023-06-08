@@ -6,18 +6,23 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-type AbstractRepository interface{}
-type MongoDbAbstractRepository struct {
+type AbstractRepository[T any] interface {
+	Create(ctx context.Context, entity T) error
+	Update(ctx context.Context, id string, update bson.M) error
+	Delete(ctx context.Context, id string) error
+	GetAll(ctx context.Context) ([]T, error)
+	GetById(ctx context.Context, id string) (T, error)
+}
+type MongoDbAbstractRepository[T any] struct {
 	Collection *mongo.Collection
 }
 
-func (m *MongoDbAbstractRepository) Create(ctx context.Context, entity any) error {
-
+func (m *MongoDbAbstractRepository[T]) Create(ctx context.Context, entity T) error {
 	_, err := m.Collection.InsertOne(ctx, entity)
 	return err
 }
-func (m *MongoDbAbstractRepository) Update(ctx context.Context, id string, update bson.M) error {
 
+func (m *MongoDbAbstractRepository[T]) Update(ctx context.Context, id string, update bson.M) error {
 	obi, err := stringToObjectId(id)
 	if err != nil {
 		return err
@@ -26,8 +31,8 @@ func (m *MongoDbAbstractRepository) Update(ctx context.Context, id string, updat
 	_, updateErr := m.Collection.UpdateOne(ctx, filter, bson.M{"$set": update})
 	return updateErr
 }
-func (m *MongoDbAbstractRepository) Delete(ctx context.Context, id string) error {
 
+func (m *MongoDbAbstractRepository[T]) Delete(ctx context.Context, id string) error {
 	obi, err := stringToObjectId(id)
 	if err != nil {
 		return err
@@ -37,8 +42,7 @@ func (m *MongoDbAbstractRepository) Delete(ctx context.Context, id string) error
 	return deleteErr
 }
 
-func (m *MongoDbAbstractRepository) GetAll(ctx context.Context) ([]any, error) {
-
+func (m *MongoDbAbstractRepository[T]) GetAll(ctx context.Context) ([]T, error) {
 	cursor, err := m.Collection.Find(ctx, bson.M{})
 	if err != nil {
 		return nil, err
@@ -50,28 +54,31 @@ func (m *MongoDbAbstractRepository) GetAll(ctx context.Context) ([]any, error) {
 		}
 	}(cursor, ctx)
 
-	var entities []any
+	var entities []T
 	err = cursor.All(ctx, &entities)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
-			return []any{}, nil
+			return []T{}, nil
 		}
 		return nil, err
 	}
 	return entities, nil
 }
 
-func (m *MongoDbAbstractRepository) GetById(ctx context.Context, id string) (any, error) {
-
+func (m *MongoDbAbstractRepository[T]) GetById(ctx context.Context, id string) (T, error) {
 	obi, err := stringToObjectId(id)
 	if err != nil {
-		return nil, err
+		return zero((*T)(nil)), err
 	}
 	filter := bson.M{"_id": obi}
-	var data any
+	var data T
 	decodeErr := m.Collection.FindOne(ctx, filter, nil).Decode(&data)
 	if decodeErr != nil {
-		return nil, decodeErr
+		return zero((*T)(nil)), decodeErr
 	}
 	return data, nil
+}
+
+func zero[T any](t *T) T {
+	return *new(T)
 }
