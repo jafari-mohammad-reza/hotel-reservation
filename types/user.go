@@ -3,6 +3,7 @@ package types
 import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"golang.org/x/crypto/bcrypt"
+	"regexp"
 )
 
 type User struct {
@@ -23,4 +24,9 @@ func CreateUserFromDto(dto CreateUserDto) (*User, error) {
 		return nil, encryptErr
 	}
 	return &User{Email: dto.Email, Password: string(encryptedPassword)}, nil
+}
+
+func IsEmailValid(email string) bool {
+	emailRegex, _ := regexp.Compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")
+	return emailRegex.MatchString(email)
 }

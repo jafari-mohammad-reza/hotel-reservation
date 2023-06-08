@@ -13,11 +13,18 @@ type NotFoundError struct {
 	Message string
 }
 
+type BadRequestError struct {
+	Message string
+}
+
 type ServerError struct {
 	Message string
 }
 
 func (e *NotFoundError) Error() string {
+	return e.Message
+}
+func (e *BadRequestError) Error() string {
 	return e.Message
 }
 
@@ -27,6 +34,9 @@ func (e *ServerError) Error() string {
 
 func (e *NotFoundError) StatusCode() int {
 	return fiber.StatusNotFound
+}
+func (e *BadRequestError) StatusCode() int {
+	return fiber.StatusBadRequest
 }
 
 func (e *ServerError) StatusCode() int {
