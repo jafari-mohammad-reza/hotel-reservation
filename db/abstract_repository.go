@@ -7,8 +7,8 @@ import (
 )
 
 type AbstractRepository[T any] interface {
-	Create(ctx context.Context, entity T) error
-	Update(ctx context.Context, id string, update bson.M) error
+	Create(ctx context.Context, entity any) error
+	Update(ctx context.Context, id string, update any) error
 	Delete(ctx context.Context, id string) error
 	GetAll(ctx context.Context) ([]T, error)
 	GetById(ctx context.Context, id string) (T, error)
@@ -17,12 +17,12 @@ type MongoDbAbstractRepository[T any] struct {
 	Collection *mongo.Collection
 }
 
-func (m *MongoDbAbstractRepository[T]) Create(ctx context.Context, entity T) error {
+func (m *MongoDbAbstractRepository[T]) Create(ctx context.Context, entity any) error {
 	_, err := m.Collection.InsertOne(ctx, entity)
 	return err
 }
 
-func (m *MongoDbAbstractRepository[T]) Update(ctx context.Context, id string, update bson.M) error {
+func (m *MongoDbAbstractRepository[T]) Update(ctx context.Context, id string, update any) error {
 	obi, err := stringToObjectId(id)
 	if err != nil {
 		return err

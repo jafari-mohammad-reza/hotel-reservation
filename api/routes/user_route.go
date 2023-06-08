@@ -10,4 +10,7 @@ func UserRoute(api fiber.Router, userRepo *db.UserRepository) {
 	userHandler := handlers.UserHandler{UserRepo: userRepo}
 	api.Get("/users", userHandler.GetUsers)
 	api.Get("/users/:id", userHandler.GetUser)
+	api.Post("/users/", userHandler.CreateUser)
+	api.Put("/users/:id", userHandler.GetUser)
+	api.Delete("/users/:id", userHandler.GetUser)
 }

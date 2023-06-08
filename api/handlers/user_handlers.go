@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/gofiber/fiber/v2"
 	"github.com/jafari-mohammad-reza/hotel-reservation.git/db"
+	"github.com/jafari-mohammad-reza/hotel-reservation.git/types"
 	"time"
 )
 
@@ -43,6 +44,26 @@ func (handler *UserHandler) GetUser(c *fiber.Ctx) error {
 	jsonErr := c.JSON(user)
 	if jsonErr != nil {
 		return jsonErr
+	}
+	return nil
+}
+
+func (handler *UserHandler) CreateUser(c *fiber.Ctx) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	var dto types.CreateUserDto
+	if err := c.BodyParser(&dto); err != nil {
+		return err
+	}
+
+	createdUser, createUserErr := types.CreateUserFromDto(dto)
+	println(createdUser)
+	if createUserErr != nil {
+		return createUserErr
+	}
+	err := handler.UserRepo.Create(ctx, createdUser)
+	if err != nil {
+		return err
 	}
 	return nil
 }

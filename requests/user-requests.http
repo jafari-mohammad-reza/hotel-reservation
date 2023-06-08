@@ -1,0 +1,18 @@
+POST http://localhost:5000/api/v1/users
+Content-Type: application/json
+
+{
+  "email": "mohammad@gmail.com",
+  "password": "MohammadPassword"
+}
+
+### CREATE USER
+GET http://localhost:5000/api/v1/users
+Accept: application/json
+
+### GET ALL USERS
+
+GET http://localhost:5000/api/v1/users/
+Accept: application/json
+
+### GET USER BY ID
