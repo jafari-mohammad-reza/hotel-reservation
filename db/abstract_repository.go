@@ -12,6 +12,7 @@ type AbstractRepository[T any] interface {
 	Delete(ctx context.Context, id string) error
 	GetAll(ctx context.Context) ([]T, error)
 	GetById(ctx context.Context, id string) (T, error)
+	Drop(ctx context.Context) error
 }
 type MongoDbAbstractRepository[T any] struct {
 	Collection *mongo.Collection
@@ -64,7 +65,13 @@ func (m *MongoDbAbstractRepository[T]) GetAll(ctx context.Context) ([]T, error) 
 	}
 	return entities, nil
 }
-
+func (m *MongoDbAbstractRepository[T]) Drop(ctx context.Context) error {
+	err := m.Collection.Drop(ctx)
+	if err != nil {
+		return err
+	}
+	return nil
+}
 func (m *MongoDbAbstractRepository[T]) GetById(ctx context.Context, id string) (T, error) {
 	obi, err := stringToObjectId(id)
 	if err != nil {

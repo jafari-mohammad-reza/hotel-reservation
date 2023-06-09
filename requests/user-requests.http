@@ -13,8 +13,8 @@ POST http://localhost:5000/api/v1/users
 Content-Type: application/json
 
 {
-  "email": "ali@gmail.com",
-  "password": "Mohammadreza"
+  "email": "user@gmail.com",
+  "password": "UserPassword"
 }
 
 ### CREATE USER

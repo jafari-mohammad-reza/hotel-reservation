@@ -69,6 +69,10 @@ func (handler *UserHandler) CreateUser(c *fiber.Ctx) error {
 	if err != nil {
 		return err
 	}
+	responseErr := c.JSON(createdUser)
+	if responseErr != nil {
+		return responseErr
+	}
 	return nil
 }
 
