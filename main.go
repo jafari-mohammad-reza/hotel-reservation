@@ -25,6 +25,14 @@ func main() {
 	userRepo := db.NewUserRepository(userCollection)
 	routes.UserRoute(apiV1, userRepo)
 
+	roomCollection := database.Collection("rooms")
+	roomRepo := db.NewRoomRepository(roomCollection)
+	routes.RoomRoute(apiV1, roomRepo)
+
+	hotelCollection := database.Collection("hotels")
+	hotelRepo := db.NewHotelRepository(hotelCollection)
+	routes.HotelRoute(apiV1, hotelRepo)
+
 	if err := app.Listen(":5000"); err != nil {
 		fmt.Println("Failed to start server:", err)
 	}
