@@ -4,7 +4,7 @@ Accept: application/json
 
 ### GET ALL Hotels
 
-GET http://localhost:5000/api/v1/hotels/6484c67ca8fd62eaf160032c
+GET http://localhost:5000/api/v1/hotels/6485f07c40ba2faab7ec46cb
 Accept: application/json
 
 ### GET Hotel BY ID

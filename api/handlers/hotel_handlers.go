@@ -6,6 +6,7 @@ import (
 	"github.com/jafari-mohammad-reza/hotel-reservation.git/db"
 	"github.com/jafari-mohammad-reza/hotel-reservation.git/types"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"time"
 )
@@ -55,12 +56,41 @@ func (handler *HotelHandler) GetHotel(c *fiber.Ctx) error {
 	id := c.Params("id")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-	user, err := handler.HotelRepo.GetById(ctx, id)
+	objectID, err := primitive.ObjectIDFromHex(id)
 	if err != nil {
-		return &ServerError{Message: err.Error()}
+		return &ServerError{Message: "Invalid hotel ID"}
 	}
 
-	jsonErr := c.JSON(user)
+	matchStage := bson.D{{
+		Key: "$match",
+		Value: bson.M{
+			"_id": objectID,
+		},
+	}}
+
+	lookupStage := bson.D{{
+		Key: "$lookup",
+		Value: bson.M{
+			"from":         "rooms",
+			"localField":   "_id",
+			"foreignField": "hotelID",
+			"as":           "rooms",
+		},
+	}}
+
+	aggregate, aggErr := handler.HotelRepo.Collection.Aggregate(ctx, mongo.Pipeline{matchStage, lookupStage})
+	if aggErr != nil {
+		return &ServerError{Message: aggErr.Error()}
+	}
+	var aggregatedHotel []types.Hotel
+	aggregateErr := aggregate.All(ctx, &aggregatedHotel)
+
+	if aggregateErr != nil {
+		return &ServerError{Message: aggregateErr.Error()}
+
+	}
+	jsonErr := c.JSON(aggregatedHotel[0])
+
 	if jsonErr != nil {
 		return jsonErr
 	}
