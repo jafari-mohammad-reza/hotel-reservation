@@ -36,11 +36,11 @@ func seedHotelAndRooms() {
 		return
 	}
 	roomTypes := []types.RoomType{types.DeluxRoomType, types.SingleRoomType, types.SeaSiteRoomType, types.DoubleRoomType}
-	for v, _ := range many.InsertedIDs {
+	for _, i := range many.InsertedIDs {
 		for _, roomType := range roomTypes {
 			room := types.Room{
 				Type:      roomType,
-				HotelID:   many.InsertedIDs[v].(primitive.ObjectID),
+				HotelID:   i.(primitive.ObjectID),
 				BasePrice: rand.Float64() * 1000,
 			}
 			room.Price = room.BasePrice * float64(room.Type)

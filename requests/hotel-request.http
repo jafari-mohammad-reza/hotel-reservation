@@ -1,0 +1,10 @@
+
+GET http://localhost:5000/api/v1/hotels
+Accept: application/json
+
+### GET ALL Hotels
+
+GET http://localhost:5000/api/v1/hotels/6484c67ca8fd62eaf160032c
+Accept: application/json
+
+### GET Hotel BY ID

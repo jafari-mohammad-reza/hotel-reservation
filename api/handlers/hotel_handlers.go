@@ -4,6 +4,9 @@ import (
 	"context"
 	"github.com/gofiber/fiber/v2"
 	"github.com/jafari-mohammad-reza/hotel-reservation.git/db"
+	"github.com/jafari-mohammad-reza/hotel-reservation.git/types"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 	"time"
 )
 
@@ -14,10 +17,27 @@ type HotelHandler struct {
 func (handler *HotelHandler) GetHotels(c *fiber.Ctx) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
-	hotels, err := handler.HotelRepo.GetAll(ctx)
+	lookupStage := bson.D{{
+		Key: "$lookup",
+		Value: bson.M{
+			"from":         "rooms",
+			"localField":   "_id",
+			"foreignField": "hotelID",
+			"as":           "rooms",
+		},
+	}}
+
+	var hotels []types.Hotel
+	aggregateData, err := handler.HotelRepo.Collection.Aggregate(ctx, mongo.Pipeline{lookupStage})
+
 	if err != nil {
 		return err
 	}
+	aggregateErr := aggregateData.All(ctx, &hotels)
+	if aggregateErr != nil {
+		return aggregateErr
+	}
+
 	if len(hotels) <= 0 {
 		data := map[string]interface{}{
 			"hotels": []interface{}{},
