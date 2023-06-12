@@ -97,6 +97,24 @@ func (handler *HotelHandler) GetHotel(c *fiber.Ctx) error {
 	return nil
 }
 
+func (handler *HotelHandler) CreateHotel(c *fiber.Ctx) error {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Millisecond*500)
+	defer cancel()
+	var dto types.CreateHotelDto
+	if parseErr := c.BodyParser(&dto); parseErr != nil {
+		return &ServerError{Message: parseErr.Error()}
+	}
+	createHotel, createHotelErr := handler.HotelRepo.CreateHotelByDto(&dto, ctx)
+	if createHotelErr != nil {
+		return &ServerError{Message: createHotelErr.Error()}
+	}
+	err := handler.HotelRepo.Create(ctx, createHotel)
+	if err != nil {
+		return &ServerError{Message: err.Error()}
+	}
+	return nil
+}
+
 func (handler *HotelHandler) DeleteHotel(c *fiber.Ctx) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()

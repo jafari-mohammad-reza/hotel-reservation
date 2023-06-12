@@ -14,3 +14,8 @@ type AggregatedHotel struct {
 	Hotel Hotel  `bson:"_id"`
 	Rooms []Room `bson:"rooms"`
 }
+
+type CreateHotelDto struct {
+	Name     string `bson:"name" json:"name"`
+	Location string `bson:"location" json:"location"`
+}
