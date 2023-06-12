@@ -19,3 +19,12 @@ Content-Type: application/json
 }
 
 ### Create Hotel
+
+PUT http://localhost:5001/api/v1/hotels/6486ed8b4d6f76456dec1032
+Content-Type: application/json
+
+{
+  "Location": "IRAN"
+}
+
+### Update Hotel

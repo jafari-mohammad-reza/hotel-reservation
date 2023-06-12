@@ -11,5 +11,6 @@ func HotelRoute(api fiber.Router, hotelRepo *db.HotelRepository) {
 	api.Get("/hotels", hotelHandler.GetHotels)
 	api.Get("/hotels/:id", hotelHandler.GetHotel)
 	api.Post("/hotels", hotelHandler.CreateHotel)
+	api.Put("/hotels/:id", hotelHandler.UpdateHotel)
 	api.Delete("/hotels/:id", hotelHandler.DeleteHotel)
 }

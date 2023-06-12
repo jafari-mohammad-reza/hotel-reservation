@@ -115,6 +115,26 @@ func (handler *HotelHandler) CreateHotel(c *fiber.Ctx) error {
 	return nil
 }
 
+func (handler *HotelHandler) UpdateHotel(c *fiber.Ctx) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	id := c.Params("id")
+	var dto types.UpdateHotelDto
+	if err := c.BodyParser(&dto); err != nil {
+		return &ServerError{Message: err.Error()}
+	}
+	hex, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return err
+	}
+	dto.ID = hex
+	_, err = handler.HotelRepo.UpdateHotelByDto(&dto, ctx)
+	if err != nil {
+		return &ServerError{Message: err.Error()}
+	}
+	return nil
+}
+
 func (handler *HotelHandler) DeleteHotel(c *fiber.Ctx) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()

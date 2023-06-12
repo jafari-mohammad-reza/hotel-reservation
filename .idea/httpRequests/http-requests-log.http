@@ -1,0 +1,192 @@
+PUT http://localhost:5001/api/v1/hotels/6486ed8b4d6f76456dec1032
+Content-Type: application/json
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "Location": "IRAN"
+}
+
+###
+
+PUT http://localhost:5001/api/v1/hotels/6486ed8b4d6f76456dec1032
+Content-Type: application/json
+Content-Length: 35
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "SECOND HOTEL UPDATE"
+}
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Content-Type: application/json
+Content-Length: 52
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "SECOND HOTEL",
+  "Location": "TEHRAN"
+}
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Content-Type: application/json
+Content-Length: 51
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}
+
+<> 2023-06-12T133234.500.json
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Content-Type: application/json
+Content-Length: 51
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}
+
+<> 2023-06-12T133213.500.json
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Content-Type: application/json
+Content-Length: 51
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Content-Type: application/json
+Content-Length: 51
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}
+
+<> 2023-06-12T133033.500.json
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Content-Type: application/json
+{:
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T133011.501.json
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Accept: application/json
+{:
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T132950.501.json
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Accept: application/json
+{:
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T132915.501.json
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Accept: application/json
+{:
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T132900.501.json
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Accept: application/json
+{:
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T132820.501.json
+
+###
+
+POST http://localhost:5001/api/v1/hotels/
+Accept: application/json
+{:
+  "name": "FIRST HOTEL",
+  "Location": "TEHRAN"
+}:
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T132722.501.json
+
+###
+

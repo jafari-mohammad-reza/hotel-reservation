@@ -19,3 +19,8 @@ type CreateHotelDto struct {
 	Name     string `bson:"name" json:"name"`
 	Location string `bson:"location" json:"location"`
 }
+type UpdateHotelDto struct {
+	ID       primitive.ObjectID `bson:"id,omitempty" json:"id,omitempty"`
+	Name     *string            `bson:"name" json:"name"`
+	Location *string            `bson:"location" json:"location"`
+}
