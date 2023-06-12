@@ -1,0 +1,32 @@
+
+GET http://localhost:5001/api/v1/rooms
+Accept: application/json
+
+### GET ALL Hotels
+
+GET http://localhost:5001/api/v1/rooms/6486f9d21f7e5c6f382d9932
+Accept: application/json
+
+### GET Hotel BY ID
+
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+
+{
+  "type" : "DoubleRoomType",
+  "base_price" : "2455",
+  "hotelId" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+### Create Hotel
+
+PUT http://localhost:5001/api/v1/rooms/6486fd0343d21798021ec416
+Content-Type: application/json
+
+{
+  "base_price": "500"
+}
+
+### Update Hotel

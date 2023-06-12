@@ -4,6 +4,8 @@ import (
 	"context"
 	"github.com/gofiber/fiber/v2"
 	"github.com/jafari-mohammad-reza/hotel-reservation.git/db"
+	"github.com/jafari-mohammad-reza/hotel-reservation.git/types"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"time"
 )
 
@@ -42,7 +44,42 @@ func (handler *RoomHandler) GetRoom(c *fiber.Ctx) error {
 
 	jsonErr := c.JSON(room)
 	if jsonErr != nil {
-		return jsonErr
+		return &ServerError{Message: jsonErr.Error()}
+	}
+	return nil
+}
+
+func (handler *RoomHandler) CreateRoom(c *fiber.Ctx) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	var dto types.CreateRoomDto
+	if err := c.BodyParser(&dto); err != nil {
+		return &ServerError{Message: err.Error()}
+	}
+	room := handler.RoomRepo.CreateRoomFromDto(&dto)
+	err := handler.RoomRepo.Create(ctx, room)
+	if err != nil {
+		return &ServerError{Message: err.Error()}
+	}
+	return nil
+}
+
+func (handler *RoomHandler) UpdateRoom(c *fiber.Ctx) error {
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	id := c.Params("id")
+	var dto types.UpdateRoomDto
+	if err := c.BodyParser(&dto); err != nil {
+		return &ServerError{Message: err.Error()}
+	}
+	hex, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		return err
+	}
+	dto.ID = hex
+	_, err = handler.RoomRepo.UpdateRoomFromDto(&dto, ctx)
+	if err != nil {
+		return &ServerError{Message: err.Error()}
 	}
 	return nil
 }

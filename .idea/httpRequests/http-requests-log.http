@@ -1,3 +1,345 @@
+PUT http://localhost:5001/api/v1/rooms/6486fd0343d21798021ec416
+Content-Type: application/json
+Content-Length: 25
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "base_price": "500"
+}
+
+###
+
+PUT http://localhost:5001/api/v1/rooms/6486fd0343d21798021ec416
+Content-Type: application/json
+Content-Length: 25
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "base_price": "500"
+}
+
+###
+
+PUT http://localhost:5001/api/v1/rooms/6486fd0343d21798021ec416
+Content-Type: application/json
+Content-Length: 26
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "base_price": "5000"
+}
+
+###
+
+PUT http://localhost:5001/api/v1/rooms/6486fd0343d21798021ec416
+Content-Type: application/json
+Content-Length: 26
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "base_price": "5000"
+}
+
+###
+
+GET http://localhost:5001/api/v1/hotels
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T144005.200.json
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 100
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "type" : "DoubleRoomType",
+  "base_price" : "2455",
+  "hotelId" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 97
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "type" : "DeluxeRoomType",
+  "base_price" : "2",
+  "hotelId" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "type" : "DeluxeRoomType",
+  "base_price" : "12",
+  "hotelId" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "type" : "DeluxeRoomType",
+  "base_price" : "12",
+  "hotelId" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+<> 2023-06-12T143902.500.json
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 84
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "Type" : "4",
+  "BasePrice" : "12",
+  "HotelID" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+<> 2023-06-12T143837.500.json
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 97
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "Type" : "DeluxeRoomType",
+  "BasePrice" : "12",
+  "HotelID" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 98
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "type" : "DeluxeRoomType",
+  "base_price" : "12",
+  "hotelID" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+<> 2023-06-12T143715.500.json
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 97
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "Type" : "DeluxeRoomType",
+  "BasePrice" : "12",
+  "HotelID" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 97
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "Type" : "DeluxeRoomType",
+  "BasePrice" : "12",
+  "HotelID" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+<> 2023-06-12T143134.500.json
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 84
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "Type" : "2",
+  "BasePrice" : "12",
+  "HotelID" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+<> 2023-06-12T143118.500.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms/6486f9d21f7e5c6f382d9932
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142935.200.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms/6486f9d21f7e5c6f382d9932
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142934.200.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms/6486f9d21f7e5c6f382d9932
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142916.200.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms/6486f9d21f7e5c6f382d9932
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142902.501.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms/6486f9d21f7e5c6f382d9932
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142717-1.501.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms/6486f9d21f7e5c6f382d9932
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142717.501.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms/6486f9d21f7e5c6f382d9932
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142656.501.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms/6486f9d21f7e5c6f382d9932
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142627.501.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142621.200.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T142606.200.json
+
+###
+
+GET http://localhost:5001/api/v1/hotels
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-12T134945.200.json
+
+###
+
 PUT http://localhost:5001/api/v1/hotels/6486ed8b4d6f76456dec1032
 Content-Type: application/json
 Content-Length: 24

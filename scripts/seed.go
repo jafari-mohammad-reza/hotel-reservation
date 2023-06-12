@@ -35,7 +35,7 @@ func seedHotelAndRooms() {
 	if hotelsErr != nil {
 		return
 	}
-	roomTypes := []types.RoomType{types.DeluxRoomType, types.SingleRoomType, types.SeaSiteRoomType, types.DoubleRoomType}
+	roomTypes := []types.RoomType{types.DeluxeRoomType, types.SingleRoomType, types.SeaSiteRoomType, types.DoubleRoomType}
 	for _, i := range many.InsertedIDs {
 		for _, roomType := range roomTypes {
 			room := types.Room{

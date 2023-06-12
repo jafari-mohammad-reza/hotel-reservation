@@ -9,8 +9,8 @@ import (
 func RoomRoute(api fiber.Router, roomRepo *db.RoomRepository) {
 	roomHandler := handlers.RoomHandler{RoomRepo: roomRepo}
 	api.Get("/rooms", roomHandler.GetRooms)
-	api.Get("/room/:id", roomHandler.GetRoom)
-	//api.Post("/rooms/", roomHandler.CreateRoom)
-	//api.Put("/room/:id", roomHandler.UodateUser)
-	api.Delete("/room/:id", roomHandler.DeleteRoom)
+	api.Get("/rooms/:id", roomHandler.GetRoom)
+	api.Post("/rooms/", roomHandler.CreateRoom)
+	api.Put("/rooms/:id", roomHandler.UpdateRoom)
+	api.Delete("/rooms/:id", roomHandler.DeleteRoom)
 }

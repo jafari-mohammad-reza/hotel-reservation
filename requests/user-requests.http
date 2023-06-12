@@ -1,15 +1,15 @@
 
-GET http://localhost:5000/api/v1/users
+GET http://localhost:5001/api/v1/users
 Accept: application/json
 
 ### GET ALL USERS
 
-GET http://localhost:5000/api/v1/users/648189f346341105099d14ff
+GET http://localhost:5001/api/v1/users/648189f346341105099d14ff
 Accept: application/json
 
 ### GET USER BY ID
 
-POST http://localhost:5000/api/v1/users
+POST http://localhost:5001/api/v1/users
 Content-Type: application/json
 
 {
@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ### CREATE USER
 
-DELETE http://localhost:5000/api/v1/users/64818c11958b0e476107cac1
+DELETE http://localhost:5001/api/v1/users/64818c11958b0e476107cac1
 Content-Type: application/json
 
 
