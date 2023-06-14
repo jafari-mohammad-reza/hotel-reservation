@@ -11,8 +11,8 @@ func RoomRoute(api fiber.Router, roomRepo *db.RoomRepository) {
 	roomHandler := handlers.RoomHandler{RoomRepo: roomRepo}
 	rooms := api.Use("/rooms", middlewares.Authorization)
 	rooms.Get("/", roomHandler.GetRooms)
-	rooms.Get("/:id", roomHandler.GetRoom)
 	rooms.Post("/", roomHandler.CreateRoom)
+	rooms.Get("/:id", roomHandler.GetRoom)
 	rooms.Put("/:id", roomHandler.UpdateRoom)
 	rooms.Delete("/:id", roomHandler.DeleteRoom)
 }

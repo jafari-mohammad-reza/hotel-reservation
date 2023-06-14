@@ -32,11 +32,11 @@ func (handler *HotelHandler) GetHotels(c *fiber.Ctx) error {
 	aggregateData, err := handler.HotelRepo.Collection.Aggregate(ctx, mongo.Pipeline{lookupStage})
 
 	if err != nil {
-		return err
+		return &ServerError{Message: err.Error()}
 	}
 	aggregateErr := aggregateData.All(ctx, &hotels)
 	if aggregateErr != nil {
-		return aggregateErr
+		return &ServerError{Message: aggregateErr.Error()}
 	}
 
 	if len(hotels) <= 0 {
@@ -47,7 +47,7 @@ func (handler *HotelHandler) GetHotels(c *fiber.Ctx) error {
 	}
 	jsonErr := c.JSON(hotels)
 	if jsonErr != nil {
-		return jsonErr
+		return &ServerError{Message: jsonErr.Error()}
 	}
 	return nil
 }

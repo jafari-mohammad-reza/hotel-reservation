@@ -17,6 +17,10 @@ type BadRequestError struct {
 	Message string
 }
 
+type UnauthorizedError struct {
+	Message string
+}
+
 type ServerError struct {
 	Message string
 }
@@ -31,7 +35,13 @@ func (e *BadRequestError) Error() string {
 func (e *ServerError) Error() string {
 	return e.Message
 }
+func (e *UnauthorizedError) Error() string {
+	return e.Message
+}
 
+func (e *UnauthorizedError) StatusCode() int {
+	return fiber.StatusUnauthorized
+}
 func (e *NotFoundError) StatusCode() int {
 	return fiber.StatusNotFound
 }
