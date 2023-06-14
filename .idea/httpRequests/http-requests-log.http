@@ -1,3 +1,127 @@
+POST http://localhost:5001/api/v1/hotels/
+Content-Type: application/json
+Content-Length: 52
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "name": "SECOND HOTEL",
+  "Location": "TEHRAN"
+}
+
+<> 2023-06-14T081546.501.json
+
+###
+
+GET http://localhost:5001/api/v1/hotels
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-14T081544.500.json
+
+###
+
+GET http://localhost:5001/api/v1/hotels
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-14T081513.500.json
+
+###
+
+GET http://localhost:5001/api/v1/hotels
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-14T081509.500.json
+
+###
+
+GET http://localhost:5001/api/v1/hotels
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-14T081454.500.json
+
+###
+
+GET http://localhost:5001/api/v1/hotels
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-14T081413.500.json
+
+###
+
+GET http://localhost:5001/api/v1/hotels
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-14T081411.500.json
+
+###
+
+POST http://localhost:5001/api/v1/rooms/
+Content-Type: application/json
+Content-Length: 100
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "type" : "DoubleRoomType",
+  "base_price" : "2455",
+  "hotelId" :  "6486ed8b4d6f76456dec1032"
+
+}
+
+<> 2023-06-14T081305.501.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-14T081247.500.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-14T081237.500.json
+
+###
+
+GET http://localhost:5001/api/v1/rooms
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-06-14T081227.500.json
+
+###
+
 PUT http://localhost:5001/api/v1/rooms/6486fd0343d21798021ec416
 Content-Type: application/json
 Content-Length: 25

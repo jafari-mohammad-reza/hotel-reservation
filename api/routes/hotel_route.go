@@ -3,14 +3,16 @@ package routes
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/jafari-mohammad-reza/hotel-reservation.git/api/handlers"
+	"github.com/jafari-mohammad-reza/hotel-reservation.git/api/middlewares"
 	"github.com/jafari-mohammad-reza/hotel-reservation.git/db"
 )
 
 func HotelRoute(api fiber.Router, hotelRepo *db.HotelRepository) {
 	hotelHandler := handlers.HotelHandler{HotelRepo: hotelRepo}
-	api.Get("/hotels", hotelHandler.GetHotels)
-	api.Get("/hotels/:id", hotelHandler.GetHotel)
-	api.Post("/hotels", hotelHandler.CreateHotel)
-	api.Put("/hotels/:id", hotelHandler.UpdateHotel)
-	api.Delete("/hotels/:id", hotelHandler.DeleteHotel)
+	hotels := api.Use("/hotels", middlewares.Authorization)
+	hotels.Get("/", hotelHandler.GetHotels)
+	hotels.Get("/:id", hotelHandler.GetHotel)
+	hotels.Post("/", hotelHandler.CreateHotel)
+	hotels.Put("/:id", hotelHandler.UpdateHotel)
+	hotels.Delete("/:id", hotelHandler.DeleteHotel)
 }
