@@ -5,6 +5,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/jafari-mohammad-reza/hotel-reservation.git/db"
 	"github.com/jafari-mohammad-reza/hotel-reservation.git/types"
+	"github.com/jafari-mohammad-reza/hotel-reservation.git/utils"
 	"time"
 )
 
@@ -72,6 +73,37 @@ func (handler *UserHandler) CreateUser(c *fiber.Ctx) error {
 	responseErr := c.JSON(createdUser)
 	if responseErr != nil {
 		return responseErr
+	}
+	return nil
+}
+
+func (handler *UserHandler) LoginUser(c *fiber.Ctx) error {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Millisecond*500)
+	defer cancel()
+	var dto types.LoginUserDto
+	if err := c.BodyParser(&dto); err != nil {
+		return &BadRequestError{Message: err.Error()}
+	}
+	if !types.IsEmailValid(dto.Email) {
+		return &BadRequestError{Message: "Invalid email address"}
+	}
+	if len(dto.Password) < 8 || len(dto.Password) > 16 {
+		return &BadRequestError{Message: "Invalid password"}
+	}
+	userId, loginErr := handler.UserRepo.Login(ctx, dto.Email, dto.Password)
+	if loginErr != nil {
+		return &BadRequestError{Message: "invalid credentials"}
+	}
+	token, tokenErr := utils.GenerateJWTAccessToken(userId)
+	if tokenErr != nil {
+		return &BadRequestError{Message: tokenErr.Error()}
+	}
+	jsonBody := map[string]string{
+		"token": token,
+	}
+	jsonErr := c.JSON(jsonBody)
+	if jsonErr != nil {
+		return &BadRequestError{Message: jsonErr.Error()}
 	}
 	return nil
 }

@@ -3,11 +3,11 @@ package utils
 import (
 	"errors"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/jafari-mohammad-reza/hotel-reservation.git/api/handlers"
+
 	"time"
 )
 
-func GenerateJWTAccessToken(userId string) (string, error) {
+func GenerateJWTAccessToken(userId any) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"userId": userId,
 		"nbf":    time.Date(2015, 10, 10, 12, 0, 0, 0, time.UTC).Unix(),
@@ -17,21 +17,22 @@ func GenerateJWTAccessToken(userId string) (string, error) {
 
 	return tokenString, err
 }
-func ExtractPayloadFromJWT(tokenString string) (string, *handlers.UnauthorizedError) {
+func ExtractPayloadFromJWT(tokenString string) (string, error) {
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-			return nil, &handlers.UnauthorizedError{Message: "invalid token"}
+			return nil, errors.New("Invalid token")
 		}
 		return []byte("Secret"), nil
 	})
 
 	if err != nil {
 		if errors.Is(err, jwt.ErrTokenMalformed) {
-			return "", &handlers.UnauthorizedError{Message: "malformed token"}
+			return "", errors.New("malformed token")
 		} else if errors.Is(err, jwt.ErrTokenExpired) || errors.Is(err, jwt.ErrTokenNotValidYet) {
-			return "", &handlers.UnauthorizedError{Message: "token is expired or not valid yet"}
+			return "", errors.New("token is expired or not valid yet")
 		} else {
-			return "", &handlers.UnauthorizedError{Message: "invalid token"}
+			return "", errors.New("Invalid token")
+
 		}
 	}
 
@@ -39,9 +40,11 @@ func ExtractPayloadFromJWT(tokenString string) (string, *handlers.UnauthorizedEr
 		if userId, ok := claims["userId"].(string); ok {
 			return userId, nil
 		} else {
-			return "", &handlers.UnauthorizedError{Message: "invalid token"}
+			return "", errors.New("Invalid token")
+
 		}
 	} else {
-		return "", &handlers.UnauthorizedError{Message: "invalid token"}
+		return "", errors.New("Invalid token")
+
 	}
 }

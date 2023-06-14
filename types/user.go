@@ -17,6 +17,11 @@ type CreateUserDto struct {
 	Password string `json:"password"`
 }
 
+type LoginUserDto struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
 func CreateUserFromDto(dto CreateUserDto) (*User, error) {
 
 	encryptedPassword, encryptErr := bcrypt.GenerateFromPassword([]byte(dto.Password), 10)

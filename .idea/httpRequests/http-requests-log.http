@@ -1,3 +1,115 @@
+POST http://localhost:5001/api/v1/users/login
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "user@gmail.com",
+  "password": "UserPassword"
+}
+
+<> 2023-06-14T144158.200.json
+
+###
+
+POST http://localhost:5001/api/v1/users/login
+Content-Type: application/json
+Content-Length: 64
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "user123@gmail.com",
+  "password": "UserPassword"
+}
+
+<> 2023-06-14T144155.400.json
+
+###
+
+POST http://localhost:5001/api/v1/users/login
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "user@gmail.com",
+  "password": "UserPassword"
+}
+
+<> 2023-06-14T144126.200.json
+
+###
+
+POST http://localhost:5001/api/v1/users
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "user@gmail.com",
+  "password": "UserPassword"
+}
+
+<> 2023-06-14T144123.200.json
+
+###
+
+POST http://localhost:5001/api/v1/users/login
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "user@gmail.com",
+  "password": "UserPassword"
+}
+
+<> 2023-06-14T144116.400.json
+
+###
+
+POST http://localhost:5001/api/v1/users/login
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "user@gmail.com",
+  "password": "UserPassword"
+}
+
+<> 2023-06-14T144033.501.json
+
+###
+
+POST http://localhost:5001/api/v1/users/login
+Content-Type: application/json
+Content-Length: 61
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "user@gmail.com",
+  "password": "UserPassword"
+}
+
+<> 2023-06-14T144005.501.json
+
+###
+
 GET http://localhost:5001/api/v1/hotels
 Accept: application/json
 Connection: Keep-Alive
@@ -543,111 +655,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 }
 
 <> 2023-06-12T133213.500.json
-
-###
-
-POST http://localhost:5001/api/v1/hotels/
-Content-Type: application/json
-Content-Length: 51
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "name": "FIRST HOTEL",
-  "Location": "TEHRAN"
-}
-
-###
-
-POST http://localhost:5001/api/v1/hotels/
-Content-Type: application/json
-Content-Length: 51
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "name": "FIRST HOTEL",
-  "Location": "TEHRAN"
-}
-
-<> 2023-06-12T133033.500.json
-
-###
-
-POST http://localhost:5001/api/v1/hotels/
-Content-Type: application/json
-{:
-  "name": "FIRST HOTEL",
-  "Location": "TEHRAN"
-}:
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-12T133011.501.json
-
-###
-
-POST http://localhost:5001/api/v1/hotels/
-Accept: application/json
-{:
-  "name": "FIRST HOTEL",
-  "Location": "TEHRAN"
-}:
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-12T132950.501.json
-
-###
-
-POST http://localhost:5001/api/v1/hotels/
-Accept: application/json
-{:
-  "name": "FIRST HOTEL",
-  "Location": "TEHRAN"
-}:
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-12T132915.501.json
-
-###
-
-POST http://localhost:5001/api/v1/hotels/
-Accept: application/json
-{:
-  "name": "FIRST HOTEL",
-  "Location": "TEHRAN"
-}:
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-12T132900.501.json
-
-###
-
-POST http://localhost:5001/api/v1/hotels/
-Accept: application/json
-{:
-  "name": "FIRST HOTEL",
-  "Location": "TEHRAN"
-}:
-Content-Length: 0
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.6)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-06-12T132820.501.json
 
 ###
 
