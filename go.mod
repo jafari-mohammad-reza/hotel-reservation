@@ -1,16 +1,16 @@
 module github.com/jafari-mohammad-reza/hotel-reservation.git
 
-go 1.20
+go 1.18
 
 require (
 	github.com/gofiber/fiber/v2 v2.46.0
+	github.com/golang-jwt/jwt/v5 v5.0.0
 	go.mongodb.org/mongo-driver v1.11.6
 	golang.org/x/crypto v0.9.0
 )
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
-	github.com/golang-jwt/jwt/v5 v5.0.0 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/klauspost/compress v1.16.5 // indirect

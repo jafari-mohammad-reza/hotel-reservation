@@ -33,6 +33,10 @@ func main() {
 	hotelRepo := db.NewHotelRepository(hotelCollection)
 	routes.HotelRoute(apiV1, hotelRepo)
 
+	bookingsCollection := database.Collection("bookings")
+	bookingsRepo := db.NewBookingRepository(bookingsCollection)
+	routes.BookingRoute(apiV1, bookingsRepo)
+
 	if err := app.Listen(":5001"); err != nil {
 		fmt.Println("Failed to start server:", err)
 	}
